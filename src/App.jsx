@@ -1,9 +1,21 @@
+import { useState } from "react";
+import Header from './Header.jsx';
 import LoginPage from "./LoginPage";
 
 function App() {
-  return (
+  const [page, setPage] = useState('home');
+
+
+    return (
     <div>
-      <LoginPage />
+        <Header onNavigate={setPage} />
+
+        <main>
+            {page === 'login' && <LoginPage />}
+            {page === 'home' && <h1>Welcome to the Blog</h1>}
+            {page === 'new' && <h1>Create a New Post</h1>}
+            {page === 'profile' && <h1>Your Profile</h1>}
+        </main>
     </div>
   );
 }
