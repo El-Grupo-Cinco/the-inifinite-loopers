@@ -12,7 +12,7 @@ function App() {
 
         <main>
             {page === 'login' && <LoginPage />}
-            {page === 'home' && <h1>Welcome to the Blog</h1>}
+            {page === 'home' && <h1>Welcome to the Infinite Loopers Blog</h1>}
             {page === 'new' && <h1>Create a New Post</h1>}
             {page === 'profile' && <h1>Your Profile</h1>}
         </main>
