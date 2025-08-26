@@ -1,0 +1,61 @@
+/* Färgerna följer vår palett. Jag använder var() med fallback så att
+   det funkar både om ni sätter tokens globalt och om ni inte gör det.
+   Palett (fallback):
+   - Platinum:    #EAEAEA
+   - Byzantium:   #893168
+   - Violet:      #4A1942
+   - Dark purple: #2E1C2B
+   - Black:       #050404
+*/
+
+.usercard{
+  /* layouten här gör att vänster (avatar+namn) och höger (datum) separeras */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+
+  /* läggs på mörk bakgrund i headern av kortet */
+  background: var(--til-usercard-bg, #2E1C2B);
+  color: var(--til-usercard-fg, #EAEAEA);
+  border-radius: 999px;
+  padding: .35rem .5rem .35rem .35rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.usercard__left{
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  min-width: 0; /* så att namn kan trunkeras om utrymmet är tajt */
+}
+
+.usercard__avatar{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #000;
+  border: 2px solid rgba(255,255,255,.35);
+  flex: 0 0 28px;
+}
+
+.usercard__name{
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 16ch;
+}
+
+.usercard__date{
+  /* separat piller enligt skissen, i högerkant */
+  background: var(--til-usercard-date-bg, #893168);
+  color: var(--til-usercard-date-fg, #EAEAEA);
+  border-radius: 999px;
+  font-size: 12px;
+  padding: .2rem .6rem;
+  line-height: 1;
+  white-space: nowrap;
+}

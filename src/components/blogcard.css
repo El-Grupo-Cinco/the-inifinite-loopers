@@ -1,0 +1,50 @@
+/* Kortet följer vår mockup: mörk lila bakgrund, rundade hörn,
+   bild i mitten och en accentfärgad textbubbla under.
+*/
+
+.blogcard{
+  background: var(--til-card-bg, #2E1C2B);      /* Dark purple */
+  color: var(--til-card-fg, #EAEAEA);           /* Platinum */
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.blogcard + .blogcard{
+  margin-top: 1rem; /* vertikalt mellanrum mellan kort */
+}
+
+.blogcard__header{
+  margin-bottom: .5rem;
+}
+
+.blogcard__media{
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.blogcard__media img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.blogcard__bubble{
+  margin-top: .7rem;
+  background: var(--til-bubble-bg, #893168);    /* Byzantium */
+  color: var(--til-bubble-fg, #EAEAEA);         /* Platinum */
+  padding: .9rem 1rem;
+  border-radius: 20px;
+  max-width: 92%;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  position: relative;
+}
+
+/* Små justeringar på lite bredare skärmar */
+@media (min-width: 640px){
+  .blogcard{ padding: 1.2rem; }
+  .blogcard__bubble{ max-width: 80%; }
+}
