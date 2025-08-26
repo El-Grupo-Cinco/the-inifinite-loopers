@@ -24,7 +24,7 @@ export default function UserCard({ avatarSrc, name, date }) {
       {/* Viktigt: datumet är ett separat piller i högerkant (enligt skissen) */}
       <div className="usercard__date">{date}</div>
     </div>
-}
+)}
 
 UserCard.propTypes = {
   avatarSrc: PropTypes.string,
@@ -35,4 +35,4 @@ UserCard.propTypes = {
 UserCard.defaultProps = {
   avatarSrc: process.env.PUBLIC_URL + "/default-avatar.png",
 };
-}
+
