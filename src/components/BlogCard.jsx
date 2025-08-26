@@ -22,7 +22,7 @@ export default function BlogCard({
       </div>
 
       {/* Media-sektion */}
-      {imageSrc && (
+      {imageSrc && /^https?:\/\/|^\/\//i.test(imageSrc) && (
         <figure className="blogcard__media">
           <img src={imageSrc} alt="" loading="lazy" />
         </figure>
