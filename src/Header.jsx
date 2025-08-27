@@ -1,5 +1,6 @@
 import './Header.css'
 import logo from './assets/infiniteLooperLogo.png'
+import { HeroSearchBar } from './components/HeroSearchBar.jsx'
 
 export default function Header({ onNavigate }) {
     return (
@@ -7,6 +8,7 @@ export default function Header({ onNavigate }) {
             <div className="logo" onClick={() => onNavigate('home')}>
                 <img src={logo} alt="The Infinite Loopers" height="50" />
             </div>
+            <HeroSearchBar />
             <nav className="nav-links">
                 <button onClick={() => onNavigate('home')}>Home</button>
                 <button onClick={() => onNavigate('new')}>New Post</button>

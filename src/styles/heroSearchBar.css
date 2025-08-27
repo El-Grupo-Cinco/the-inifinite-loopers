@@ -1,0 +1,28 @@
+.hero-list {
+    list-style: none;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-list > input {
+    width: 15rem;
+}
+
+.hidden-list {
+    display: none;
+    position: absolute;
+    padding: 0.5rem;
+    background-color: #2E1C2B;
+    border: 1px solid white;
+    z-index: 100;
+    width: 15rem;
+}
+
+.hidden-list.show-list {
+    display: block;
+}
+
+.hidden-list a {
+    text-decoration: none;
+    color: white;
+}
