@@ -1,6 +1,5 @@
 // src/components/UserPage.jsx
 import React from "react";
-import { useAuth } from "../contexts/Authcontext";
 
 export default function UserPage() {
   const { user } = useAuth();
