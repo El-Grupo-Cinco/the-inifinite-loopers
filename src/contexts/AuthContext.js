@@ -1,4 +1,3 @@
-// src/contexts/AuthContext.jsx
 import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   getCurrentUsername,
@@ -18,7 +17,6 @@ export function AuthProvider({ children }) {
   });
 
   useEffect(() => {
-    // pick up changes made in another tab
     const onStorage = (e) => {
       if (e.key === "til_session") {
         const s = loadSession();
