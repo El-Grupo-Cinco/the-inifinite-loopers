@@ -1,0 +1,22 @@
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2E1C2B; /* samma som header */
+    color: white;
+    padding: 20px 30px; /* samma som header */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* skugga uppåt */
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
