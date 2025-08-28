@@ -1,3 +1,4 @@
+// src/Header.jsx
 import './Header.css'
 import logo from './assets/infiniteLooperLogo.png'
 import { HeroSearchBar } from './components/HeroSearchBar.jsx'
