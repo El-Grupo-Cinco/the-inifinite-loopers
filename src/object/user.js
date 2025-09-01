@@ -1,8 +1,6 @@
-import { create_UUID } from "../functions/uuidGenerator.js";
-
 export class User {
     constructor (uuid, username, password) {
-        this.userID = create_UUID(uuid);
+        this.userID = uuid;
         this.username = username;
         this.password = password;
         //TODO add avatar
