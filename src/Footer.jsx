@@ -1,13 +1,13 @@
 import './Footer.css';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
     return (
         <footer className="site-footer">
             <p>© {new Date().getFullYear()} The Infinite Loopers</p>
             <nav className="footer-links">
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy Policy</a>
+                <button onClick={() => onNavigate('about')}>About</button>
+                <button onClick={() => onNavigate('contact')}>Contact</button>
+                <button onClick={() => onNavigate('privacyPolicy')}>Privacy Policy</button>                
             </nav>
         </footer>
     );

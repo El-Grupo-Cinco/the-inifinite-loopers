@@ -9,14 +9,15 @@
     font-size: 0.9rem;
 }
 
-.footer-links a {
+.footer-links button {
     margin-left: 20px;
+    background: none;
+    border: none;
     color: white;
-    text-decoration: none;
     font-size: 1rem;
-    transition: color 0.2s;
+    cursor: pointer;
 }
 
-.footer-links a:hover {
+.footer-links button:hover {
     text-decoration: underline;
 }
