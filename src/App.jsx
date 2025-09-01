@@ -3,7 +3,9 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import LoginPage from "./LoginPage";
 import CreatePost from "./components/CreatePost.jsx";
-import BlogFeed from './components/BlogFeed'
+import HomePage from './HomePage.jsx'
+import AboutPage from "./AboutPage.jsx";
+import './App.css';
 
 function App() {
   const [page, setPage] = useState('home');
@@ -17,17 +19,19 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app-container">
         <Header onNavigate={setPage} />
 
         <main>
             {page === 'new' && <CreatePost onSubmit={handleNewPost} />}
             {page === 'login' && <LoginPage />}
-            {page === 'home' && <BlogFeed posts={posts} />}
+            {page === 'home' && <HomePage posts={posts} />}
+
             {page === 'profile' && <h1>Your Profile</h1>}
+            {page === 'about' && <AboutPage />}
         </main>
 
-        <Footer />
+        <Footer onNavigate={setPage} />
     </div>
   )
 }
