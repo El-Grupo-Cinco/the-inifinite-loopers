@@ -1,7 +1,7 @@
 // Den här komponenten visar användarens avatar + namn till vänster,
 // och ett helt separat datum-piller som ligger högst upp till höger.
 // Den är fristående och används inuti BlogCard, men går också att
-// återanvända i t.ex. kommentarslistor eller profilsidor.
+// återanvända i t.ex. Kommentarslistor eller profilsidor.
 
 import React from "react";
 import PropTypes from "prop-types";
@@ -14,9 +14,12 @@ export default function UserCard({ avatarSrc, name, date }) {
         {/* Bilden kan vara valfri URL. Om ingen bild ges – lägg gärna en default i vår public-mapp */}
         <img
           className="usercard__avatar"
-          src={typeof avatarSrc === "string" && avatarSrc.startsWith("http") ? avatarSrc : process.env.PUBLIC_URL + "/default-avatar.png"}
+          /*src={typeof avatarSrc === "string" && avatarSrc.startsWith("http") ? avatarSrc : process.env.PUBLIC_URL + "/default-avatar.png"}
+          alt={name}*/
+
+          src={avatarSrc || "/default-avatar.png"}
           alt={name}
-          onError={e => { e.target.onerror = null; e.target.src = process.env.PUBLIC_URL + "/default-avatar.png"; }}
+          onError={e => { e.target.onerror = null; e.target.src = /*process.env.PUBLIC_URL +*/ "/default-avatar.png"; }}
         />
         <span className="usercard__name">{name}</span>
       </div>
@@ -33,6 +36,6 @@ UserCard.propTypes = {
 };
 
 UserCard.defaultProps = {
-  avatarSrc: process.env.PUBLIC_URL + "/default-avatar.png",
+  avatarSrc: /*process.env.PUBLIC_URL +*/ "/default-avatar.png",
 };
 
