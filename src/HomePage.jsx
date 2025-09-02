@@ -1,14 +1,17 @@
-import React from 'react'
-import BlogFeed from './components/BlogFeed'
+// src/HomePage.jsx
+import React from 'react';
+import './HomePage.css';
+import BlogFeed from './components/BlogFeed';
 
-
-const HomePage = (posts) => {
+export default function HomePage({ posts }) {
   return (
-    <div>
-    <div>Welcome to the epic superhero quartet!!!</div>
-    <BlogFeed posts={posts} />
-    </div>
-  )
-}
+    <div className="home-container">
+      <section className="home-intro">
+        <h1>Välkommen till The Infinite Loopers Blogg</h1>
+        <p>Här samlar vårt superhjälteteam rapporter från fältet...</p>
+      </section>
 
-export default HomePage
+      <BlogFeed posts={posts} />
+    </div>
+  );
+}

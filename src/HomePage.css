@@ -1,0 +1,24 @@
+.home-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.home-intro {
+  background: #2E1C2B;
+  color: white;
+  padding: 18px 22px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 16px 0 22px;
+}
+
+.home-intro h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.home-intro p {
+  margin: 0;
+  opacity: 0.95;
+}
