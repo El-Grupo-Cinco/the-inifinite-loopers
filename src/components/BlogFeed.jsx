@@ -1,5 +1,5 @@
 import BlogCard from './BlogCard'
-import './blogfeed.css'
+import '../styles/blogfeed.css'
 
 export default function BlogFeed({ posts }) {
     if (!Array.isArray(posts) || posts.length === 0) {

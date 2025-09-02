@@ -1,12 +1,12 @@
 // src/App.jsx
 import { useState } from "react";
-import Header from './Header.jsx';
-import Footer from './Footer.jsx';
-import LoginPage from "./LoginPage";
+import Header from './pages/Header.jsx';
+import Footer from './pages/Footer.jsx';
+import LoginPage from "./pages/LoginPage.jsx";
 import CreatePost from "./components/CreatePost.jsx";
-import HomePage from './HomePage.jsx';
-import AboutPage from "./AboutPage.jsx";
-import './App.css';
+import HomePage from './pages/HomePage.jsx';
+import AboutPage from "./pages/AboutPage.jsx";
+import './styles/App.css';
 
 export default function App() {
   const [page, setPage] = useState('home'); 

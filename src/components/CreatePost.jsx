@@ -1,5 +1,5 @@
 import { useState } from "react"
-import './createpost.css'
+import '../styles/createpost.css'
 
 export default function CreatePost({ onSubmit }) {
     const [title, setTitle] = useState("")

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./LoginPage.css";
+import "../styles/LoginPage.css";
 
 function LoginPage() {
   const [view, setView] = useState("login")

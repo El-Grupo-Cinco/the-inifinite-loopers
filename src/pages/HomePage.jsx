@@ -1,7 +1,6 @@
-// src/HomePage.jsx
 import React from 'react';
-import './HomePage.css';
-import BlogFeed from './components/BlogFeed';
+import '../styles/HomePage.css';
+import BlogFeed from '../components/BlogFeed';
 
 export default function HomePage({ posts }) {
   return (
