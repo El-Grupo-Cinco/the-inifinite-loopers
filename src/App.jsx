@@ -1,4 +1,3 @@
-// src/App.jsx
 import { useEffect, useState } from "react";
 import Header from "./pages/Header.jsx";
 import Footer from "./pages/Footer.jsx";
@@ -29,13 +28,13 @@ export default function App() {
   //used in LoginPage props, used to set user and changes login/Log out button in header
   const handleLoginSuccess = (userObj) => {
     localStorage.setItem("loggedIn", JSON.stringify(userObj));
-    setIsLoggedIn("Log out"); // <-- update React immediately
-  };
+    setIsLoggedIn("Log out");
+  }
 
   //same as above but in case login fails
   const handleLoginFail = () => {
     localStorage.setItem("loggedIn", "false");
-    setIsLoggedIn("Login"); // <-- update React immediately
+    setIsLoggedIn("Login");
   };
 
   //setup but not implemented yet
