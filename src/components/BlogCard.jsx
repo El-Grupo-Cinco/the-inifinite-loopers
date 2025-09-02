@@ -5,7 +5,7 @@
 
 import React from "react";
 import "../styles/blogcard.css";
-import UserCard from "../components/UserCard.css";
+import UserCard from "../components/UserCard.jsx";
 
 export default function BlogCard({
   authorName,

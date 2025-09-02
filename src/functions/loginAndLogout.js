@@ -10,12 +10,12 @@ import { User } from "../object/user.js";
 export function login(username, password) {
     const users = JSON.parse(localStorage.getItem("users"));
     users.map((u) => {
-        new User(u.uuid, )
+        new User(u.uuid, u.username, u.password)
     })
 
     for (let user of users) {
         if (user.username === username) {
-            localStorage.setItem("loggedIn", checkPassword(username, password, user.password));
+            localStorage.setItem("loggedIn", JSON.stringify(checkPassword(user, password)));
             return localStorage.getItem("loggedIn");
         }
 
@@ -37,11 +37,12 @@ export function logout() {
  * @param {*} passwordLocalStorage 
  * @returns 
  */
-function checkPassword(username, passwordInput, passwordLocalStorage) {
-    if (passwordInput === passwordLocalStorage) {
-        localStorage.setItem("username", username); //for easy access when creating posts
-        return true;
+function checkPassword(user, passwordInput) {
+    if (passwordInput === user.password) {
+        console.log("checkpass true");
+        
+        return user;
     }
-
+    console.error("checkpass false");
     return false;
 }

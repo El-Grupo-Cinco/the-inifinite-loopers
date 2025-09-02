@@ -5,7 +5,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import "./usercard.css";
+import "../styles/usercard.css";
 
 export default function UserCard({ avatarSrc, name, date }) {
   return (

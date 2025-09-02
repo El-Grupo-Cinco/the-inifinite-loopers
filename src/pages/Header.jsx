@@ -1,8 +1,10 @@
 import '../styles/Header.css'
 import logo from '../assets/infiniteLooperLogo.png'
 import { HeroSearchBar } from '../components/HeroSearchBar.jsx'
+import { useEffect, useState } from 'react'
 
-export default function Header({ onNavigate }) {
+export default function Header({ onNavigate, loggedIn }) {
+    
     return (
         <header className="site-header">
             <div className="logo" onClick={() => onNavigate('home')}>
@@ -13,7 +15,7 @@ export default function Header({ onNavigate }) {
                 <button onClick={() => onNavigate('home')}>Home</button>
                 <button onClick={() => onNavigate('new')}>New Post</button>
                 <button onClick={() => onNavigate('profile')}>Profile</button>
-                <button onClick={() => onNavigate('login')}>Log out</button>
+                <button onClick={() => onNavigate('login')}>{loggedIn}</button>
             </nav>
         </header>
     )
