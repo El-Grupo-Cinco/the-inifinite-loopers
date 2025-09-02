@@ -4,8 +4,8 @@
 // från localStorage, API eller hårdkodat under utveckling.
 
 import React from "react";
-import "./blogcard.css";
-import UserCard from "./UserCard";
+import "../styles/blogcard.css";
+import UserCard from "../components/UserCard.css";
 
 export default function BlogCard({
   authorName,
