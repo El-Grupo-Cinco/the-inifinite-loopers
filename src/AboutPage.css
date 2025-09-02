@@ -1,3 +1,64 @@
 .about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+  color: #2E1C2B;
+}
 
+.about-hero {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-hero h1 {
+  font-size: 2.2rem;
+  margin: 0 0 8px;
+  color: #2E1C2B;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+.about-mission {
+  background: #FAF5F8;
+  border: 1px solid #E8DCE5;
+  padding: 18px 20px;
+  border-radius: 12px;
+  margin: 24px 0;
+}
+
+.about-mission h2,
+.about-funfacts h2 {
+  margin: 0 0 10px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 26px 0;
+}
+
+.card {
+  background: white;
+  border: 1px solid #E8DCE5;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card .emoji {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.about-funfacts ul {
+  padding-left: 18px;
+}
+
+.about-funfacts li {
+  margin: 6px 0;
 }
