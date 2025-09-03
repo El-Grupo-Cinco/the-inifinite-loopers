@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage.jsx";
 import CreatePost from "./components/CreatePost.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import Contact from "./pages/Contact.jsx";
+import PrivacyPolicy from "./pages/Privacy.jsx";
 import "./styles/App.css";
 
 export default function App() {
@@ -59,6 +61,8 @@ export default function App() {
           />}
         {page === "profile" && <h1>Your Profile</h1>}
         {page === "about" && <AboutPage />}
+        {page === "contact" && <Contact />}
+        {page === "privacypolicy" && <PrivacyPolicy />}
       </main>
 
       <Footer onNavigate={setPage} />
