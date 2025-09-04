@@ -1,84 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/UserPage.css";
-
-function InlinePostCard({ post }) {
-  const { authorName, authorAvatar, date, imageSrc, text } = post || {};
-  return (
-    <article className="blogcard" style={{ marginBottom: "1rem" }}>
-      <div
-        className="blogcard__header"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: ".6rem" }}>
-          <img
-            src={
-              authorAvatar || /*process.env.PUBLIC_URL +*/ "/default-avatar.png"
-            }
-            alt={authorName || "avatar"}
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: "50%",
-              objectFit: "cover",
-              border: "2px solid rgba(255,255,255,0.12)",
-            }}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = /*process.env.PUBLIC_URL +*/ "/default-avatar.png";
-            }}
-          />
-          <div style={{ minWidth: 0 }}>
-            <div
-              style={{
-                fontWeight: 700,
-                fontSize: "0.95rem",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                maxWidth: "18ch",
-              }}
-            >
-              {authorName}
-            </div>
-          </div>
-        </div>
-        <div
-          style={{
-            background: "rgba(137,49,104,0.95)",
-            padding: ".25rem .6rem",
-            borderRadius: 999,
-            fontSize: ".85rem",
-          }}
-        >
-          {date}
-        </div>
-      </div>
-
-      {imageSrc && (
-        <figure
-          className="blogcard__media"
-          style={{ marginTop: ".6rem", overflow: "hidden", borderRadius: 12 }}
-        >
-          <img
-            src={imageSrc}
-            alt=""
-            style={{ width: "100%", display: "block" }}
-          />
-        </figure>
-      )}
-
-      {text && (
-        <div className="blogcard__bubble" style={{ marginTop: ".7rem" }}>
-          {text}
-        </div>
-      )}
-    </article>
-  );
-}
+import BlogCard from "../components/BlogCard";
 
 export default function UserPage() {
   const [user, setUser] = useState(null);
@@ -161,7 +83,17 @@ export default function UserPage() {
         {posts.length === 0 ? (
           <p>No posts yet.</p>
         ) : (
-          posts.map((p, idx) => <InlinePostCard key={p.id ?? idx} post={p} />)
+          posts.map((p, idx) => (
+            <BlogCard
+              key={p.id ?? idx}
+              authorName={p.authorId}
+              authorAvatar={"" /**hur? */}
+              date={p.date}
+              imageSrc={""}
+              title={p.title}
+              text={p.content}
+            />
+          ))
         )}
       </section>
     </div>

@@ -1,9 +1,9 @@
 export class BlogPost {
-  constructor(id, title, content, picture, authorId) {
+  constructor(id, date, title, content, authorId) {
     this.id = id;
+    this.date = date;
     this.title = title;
     this.content = content;
-    this.picture = picture;
     this.authorId = authorId;
   }
 }

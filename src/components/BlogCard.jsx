@@ -10,9 +10,10 @@ import UserCard from "../components/UserCard.jsx";
 export default function BlogCard({
   authorName,
   authorAvatar,
-  date,        // tips: skicka in redan formaterat datum, t.ex. "2025-08-22"
-  imageSrc,    // kan vara tomt/null om posten saknar bild
-  text,        // själva inläggstexten
+  date, // tips: skicka in redan formaterat datum, t.ex. "2025-08-22"
+  imageSrc, // kan vara tomt/null om posten saknar bild
+  title,
+  text, // själva inläggstexten
 }) {
   return (
     <article className="blogcard">
@@ -27,6 +28,8 @@ export default function BlogCard({
           <img src={imageSrc} alt="" loading="lazy" />
         </figure>
       )}
+
+      {title && <h2>{title}</h2>}
 
       {/* Textbubblan under bilden */}
       {text && <div className="blogcard__bubble">{text}</div>}

@@ -9,6 +9,7 @@ import Contact from "./pages/Contact.jsx";
 import PrivacyPolicy from "./pages/Privacy.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import "./styles/App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function App() {
   const [page, setPage] = useState("home");
@@ -47,28 +48,36 @@ export default function App() {
   };
 
   return (
-    <div>
+    <BrowserRouter>
       <Header
         onNavigate={setPage}
         loggedIn={isLoggedIn}
         onLogout={handleLogout}
       />
       <main>
-        {page === "home" && <HomePage posts={posts} />}
-        {page === "new" && <CreatePost onSubmit={handleNewPost} />}
-        {page === "login" && (
-          <LoginPage
-            onLoginSuccess={handleLoginSuccess}
-            onLoginFail={handleLoginFail}
+        <Routes>
+          <Route path="/" element={<HomePage posts={posts} />} />
+          <Route
+            path="/create-post"
+            element={<CreatePost onSubmit={handleNewPost} />}
           />
-        )}
-        {page === "profile" && <UserPage />}
-        {page === "about" && <AboutPage />}
-        {page === "contact" && <Contact />}
-        {page === "privacypolicy" && <PrivacyPolicy />}
+          <Route
+            path="/login"
+            element={
+              <LoginPage
+                onLoginSuccess={handleLoginSuccess}
+                onLoginFail={handleLoginFail}
+              />
+            }
+          />
+          <Route path="/profile" element={<UserPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        </Routes>
       </main>
 
       <Footer onNavigate={setPage} />
-    </div>
+    </BrowserRouter>
   );
 }
