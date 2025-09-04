@@ -22,7 +22,7 @@ export default function CreatePost({ onSubmit }) {
 
     const newPost = {
       id: crypto.randomUUID(),
-      authorName: "TestUser", // fake username for now
+      authorName: "TestUser", // fake username for now_
       authorAvatar: "https://i.pravatar.cc/100?u=testuser", // placeholder avatar
       date: new Date().toLocaleDateString(),
       title: title,
