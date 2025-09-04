@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import Contact from "./pages/Contact.jsx";
 import PrivacyPolicy from "./pages/Privacy.jsx";
+import UserPage from "./pages/UserPage.jsx";
 import "./styles/App.css";
 
 export default function App() {
@@ -31,7 +32,7 @@ export default function App() {
   const handleLoginSuccess = (userObj) => {
     localStorage.setItem("loggedIn", JSON.stringify(userObj));
     setIsLoggedIn("Log out");
-  }
+  };
 
   //same as above but in case login fails
   const handleLoginFail = () => {
@@ -55,11 +56,13 @@ export default function App() {
       <main>
         {page === "home" && <HomePage posts={posts} />}
         {page === "new" && <CreatePost onSubmit={handleNewPost} />}
-        {page === "login" && <LoginPage
+        {page === "login" && (
+          <LoginPage
             onLoginSuccess={handleLoginSuccess}
-            onLoginFail={handleLoginFail} 
-          />}
-        {page === "profile" && <h1>Your Profile</h1>}
+            onLoginFail={handleLoginFail}
+          />
+        )}
+        {page === "profile" && <UserPage />}
         {page === "about" && <AboutPage />}
         {page === "contact" && <Contact />}
         {page === "privacypolicy" && <PrivacyPolicy />}
