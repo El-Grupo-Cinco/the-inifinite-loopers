@@ -49,7 +49,6 @@ function InlinePostCard({ post }) {
         <div
           style={{
             background: "rgba(137,49,104,0.95)",
-            color: "#EAEAEA",
             padding: ".25rem .6rem",
             borderRadius: 999,
             fontSize: ".85rem",
@@ -127,7 +126,6 @@ export default function UserPage() {
         padding: "2rem",
         maxWidth: 900,
         margin: "0 auto",
-        color: "#EAEAEA",
       }}
     >
       <section
@@ -154,20 +152,14 @@ export default function UserPage() {
             e.target.src = /*process.env.PUBLIC_URL +*/ "/default-avatar.png";
           }}
         />
-        <h2 style={{ margin: 0, color: "#EAEAEA" }}>
-          {user ? user.username : "Not logged in"}
-        </h2>
-        {user && (
-          <p style={{ marginTop: ".4rem", color: "rgba(234,234,234,0.9)" }}>
-            User ID: {user.userID}
-          </p>
-        )}
+        <h2 style={{ margin: 0 }}>{user ? user.username : "Not logged in"}</h2>
+        {user && <p style={{ marginTop: ".4rem" }}>User ID: {user.userID}</p>}
       </section>
 
       <section className="user-posts">
-        <h3 style={{ color: "#EAEAEA", marginBottom: ".6rem" }}>Posts</h3>
+        <h3 style={{ marginBottom: ".6rem" }}>Posts</h3>
         {posts.length === 0 ? (
-          <p style={{ color: "rgba(234,234,234,0.8)" }}>No posts yet.</p>
+          <p>No posts yet.</p>
         ) : (
           posts.map((p, idx) => <InlinePostCard key={p.id ?? idx} post={p} />)
         )}
