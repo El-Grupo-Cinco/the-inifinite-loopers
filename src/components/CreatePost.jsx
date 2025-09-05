@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BlogPost} from "../object/Blogg.js";
 import "../styles/createpost.css";
 
 export default function CreatePost({ onSubmit }) {
@@ -17,25 +18,21 @@ export default function CreatePost({ onSubmit }) {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    const newPost = {
-      id: crypto.randomUUID(),
-      authorName: "TestUser", // fake username for now_
-      authorAvatar: "https://i.pravatar.cc/100?u=testuser", // placeholder avatar
-      date: new Date().toLocaleDateString(),
-      title: title,
-      imageSrc: image,
-      text: content,
+        const newPost = new BlogPost(
+            crypto.randomUUID(),
+            new Date().toLocaleDateString(),
+            title,
+            content,
+            "123" // TODO: Replace with logged-in user's ID
+        );
+
+        onSubmit(newPost);
+        setTitle("");
+        setContent("");
     };
-
-    if (onSubmit) onSubmit(newPost);
-
-    setTitle("");
-    setContent("");
-    setImage(null);
-  };
 
   return (
     <form className="create-post-form" onSubmit={handleSubmit}>

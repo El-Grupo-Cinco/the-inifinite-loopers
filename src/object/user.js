@@ -17,3 +17,17 @@ export class User {
         
     }
 }
+
+
+export const users = [
+    {
+        id: "123",
+        username: "Spiderman",
+        avatar: "https://i.pravatar.cc/100?u=spidey",
+    },
+    {
+        id: "456",
+        username: "Ironman",
+        avatar: "https://i.pravatar.cc/100?u=ironman",
+    },
+];

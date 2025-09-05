@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import "../styles/UserPage.css";
+import "../styles/userpage.css";
 import BlogCard from "../components/BlogCard";
+import { users } from "../object/user";
 
 export default function UserPage() {
   const [user, setUser] = useState(null);
@@ -54,48 +55,49 @@ export default function UserPage() {
         className="hero-profile"
         style={{ textAlign: "center", marginBottom: "2rem" }}
       >
-        <img
-          className="hero-avatar"
-          src={
-            (user && user.avatar) ||
-            /*process.env.PUBLIC_URL +*/ "/default-avatar.png"
-          }
-          alt={user ? user.username : "guest"}
-          style={{
-            width: 100,
-            height: 100,
-            borderRadius: "50%",
-            objectFit: "cover",
-            border: "3px solid #646cff",
-            marginBottom: "0.75rem",
-          }}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = /*process.env.PUBLIC_URL +*/ "/default-avatar.png";
-          }}
-        />
-        <h2 style={{ margin: 0 }}>{user ? user.username : "Not logged in"}</h2>
+          <img
+              className="hero-avatar"
+              src={user?.avatar || "https://i.pravatar.cc/100?u=default"}
+              alt={user ? user.username : "guest"}
+              style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  border: "3px solid #646cff",
+                  marginBottom: "0.75rem",
+              }}
+              onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://i.pravatar.cc/100?u=default";
+              }}
+          />
+
+          <h2 style={{ margin: 0 }}>{user ? user.username : "Not logged in"}</h2>
         {user && <p style={{ marginTop: ".4rem" }}>User ID: {user.userID}</p>}
       </section>
 
-      <section className="user-posts">
-        <h3 style={{ marginBottom: ".6rem" }}>Posts</h3>
-        {posts.length === 0 ? (
-          <p>No posts yet.</p>
-        ) : (
-          posts.map((p, idx) => (
-            <BlogCard
-              key={p.id ?? idx}
-              authorName={p.authorId}
-              authorAvatar={"" /**hur? */}
-              date={p.date}
-              imageSrc={""}
-              title={p.title}
-              text={p.content}
-            />
-          ))
-        )}
-      </section>
+        <section className="user-posts">
+            <h3 style={{ marginBottom: ".6rem" }}>Posts</h3>
+            {posts.length === 0 ? (
+                <p>No posts yet.</p>
+            ) : (
+                posts.map((p, idx) => {
+                    const postAuthor = users.find((u) => u.userID === p.authorId);
+                    return (
+                        <BlogCard
+                            key={p.id ?? idx}
+                            authorName={postAuthor?.username || p.authorId}
+                            authorAvatar={postAuthor?.avatar || "/default-avatar.png"}
+                            date={p.date}
+                            imageSrc={p.imageSrc || ""}
+                            title={p.title}
+                            text={p.content}
+                        />
+                    );
+                })
+            )}
+        </section>
     </div>
   );
 }
