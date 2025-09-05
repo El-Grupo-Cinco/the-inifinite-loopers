@@ -12,13 +12,12 @@ import "./styles/App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function App() {
-  const [page, setPage] = useState("home");
   const [posts, setPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState("Login");
 
   const handleNewPost = (post) => setPosts([post, ...posts]);
 
-  //checks login status when loading firsttime (to set login/Log out button in header)
+  //checks login status when loading first time (to set login/Log out button in header)
   useEffect(() => {
     const stored = localStorage.getItem("loggedIn");
 
@@ -49,11 +48,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Header
-        onNavigate={setPage}
-        loggedIn={isLoggedIn}
-        onLogout={handleLogout}
-      />
+      <Header loggedIn={isLoggedIn} onLogout={handleLogout} />
       <main>
         <Routes>
           <Route path="/" element={<HomePage posts={posts} />} />
@@ -77,7 +72,7 @@ export default function App() {
         </Routes>
       </main>
 
-      <Footer onNavigate={setPage} />
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -19,13 +19,14 @@ export default function UserPage() {
       localStorage.getItem("userPostsList") ||
       "[]";
     let saved = [];
-    try {
-      saved = JSON.parse(raw) || [];
-    } catch (e) {
-      saved = [];
-    }
+      try {
+          saved = JSON.parse(raw) || [];
+      } catch (e) {
+          console.error("Error parsing posts from localStorage:", e);
+          saved = [];
+      }
 
-    function timeOf(v) {
+      function timeOf(v) {
       if (!v) return 0;
       const n = Number(v);
       if (!isNaN(n) && n !== 0) return n;
