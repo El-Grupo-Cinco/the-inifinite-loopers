@@ -7,13 +7,20 @@ export default function UserPage() {
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const username = localStorage.getItem("username");
     const users = JSON.parse(localStorage.getItem("users") || "[]");
     const loggedInUser = users.find((u) => u.username === username) || null;
-    setUser(loggedInUser);
+    setUser(loggedInUser);*/
 
-    const raw =
+    useEffect(() => {
+        const loggedInRaw = localStorage.getItem("loggedIn");
+        if (loggedInRaw && loggedInRaw !== "false") {
+            const loggedInUser = JSON.parse(loggedInRaw);
+            setUser(loggedInUser);
+        }
+
+        const raw =
       localStorage.getItem("userPosts") ||
       localStorage.getItem("posts") ||
       localStorage.getItem("userPostsList") ||
@@ -43,6 +50,26 @@ export default function UserPage() {
     setPosts(saved);
   }, []);
 
+  const handleAvatarChange = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+          const updatedUser = { ...user, avatar: reader.result };
+
+          //Update user in localStorage
+          const users = JSON.parse(localStorage.getItem("users") || "[]");
+          const updatedUsers = users.map((u) => u.userID === user.userID ? updatedUser : u);
+          localStorage.setItem("users", JSON.stringify(updatedUsers));
+          localStorage.setItem("loggedIn", JSON.stringify(updatedUser));
+
+          setUser(updatedUser);
+      };
+
+      reader.readAsDataURL(file);
+  };
+
   return (
     <div
       className="userpage"
@@ -52,10 +79,7 @@ export default function UserPage() {
         margin: "0 auto",
       }}
     >
-      <section
-        className="hero-profile"
-        style={{ textAlign: "center", marginBottom: "2rem" }}
-      >
+      <section className="hero-profile" style={{ textAlign: "center", marginBottom: "2rem" }} >
           <img
               className="hero-avatar"
               src={user?.avatar || "https://i.pravatar.cc/100?u=default"}
@@ -73,6 +97,13 @@ export default function UserPage() {
                   e.target.src = "https://i.pravatar.cc/100?u=default";
               }}
           />
+
+          {user && (
+              <div style={{ marginTop: "1rem" }}>
+                  <input type="file" accept="image/*" onChange={handleAvatarChange} />
+              </div>
+          )}
+
 
           <h2 style={{ margin: 0 }}>{user ? user.username : "Not logged in"}</h2>
         {user && <p style={{ marginTop: ".4rem" }}>User ID: {user.userID}</p>}

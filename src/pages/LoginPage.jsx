@@ -27,7 +27,8 @@ export function LoginPage({
     }
   };
 
-  const ShowLoginOrLogout = () => {
+  /* Problem with username/password input bar
+    const ShowLoginOrLogout = () => {
     console.log(showLogin);
 
     if (showLogin) {
@@ -38,6 +39,8 @@ export function LoginPage({
           setUsername={setUsername}
           setPassword={setPassword}
           tryLogin={tryLogin}
+          username={username}
+          password={password}
         />
       );
     } else {
@@ -47,7 +50,26 @@ export function LoginPage({
     }
   };
 
-  return <ShowLoginOrLogout />;
+  return <ShowLoginOrLogout />*/
+
+
+    return showLogin ? (
+        <Login
+            view={view}
+            setView={setView}
+            setUsername={setUsername}
+            setPassword={setPassword}
+            tryLogin={tryLogin}
+            username={username}
+            password={password}
+        />
+    ) : (
+        <Logout
+            setIsLogin={setIsLogin}
+            showLoginForm={setShowLoginForm}
+        />
+    );
+
 }
 
 export default LoginPage;
