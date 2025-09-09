@@ -1,8 +1,8 @@
-import React from 'react';
-import '../styles/HomePage.css';
-import BlogFeed from '../components/BlogFeed';
+import React from "react";
+import "../styles/HomePage.css";
+import BlogFeed from "../components/BlogFeed";
 
-export default function HomePage({ posts }) {
+export default function HomePage({ posts, users }) {
   return (
     <div className="home-container">
       <section className="home-intro">
@@ -10,7 +10,7 @@ export default function HomePage({ posts }) {
         <p>Här samlar vårt superhjälteteam rapporter från fältet...</p>
       </section>
 
-      <BlogFeed posts={posts} />
+      <BlogFeed posts={posts} users={users} />
     </div>
   );
 }
