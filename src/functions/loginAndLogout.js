@@ -22,7 +22,7 @@ export function login(username, password) {
       return localStorage.getItem("loggedIn");
     }
 
-    localStorage, setItem("loggedIn", false);
+    localStorage.setItem("loggedIn", false);
     return false;
   }
 }
