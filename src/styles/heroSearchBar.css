@@ -1,28 +1,29 @@
 .hero-list {
-    list-style: none;
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .hero-list > input {
-    width: 15rem;
+  width: 15rem;
 }
 
 .hidden-list {
-    display: none;
-    position: absolute;
-    padding: 0.5rem;
-    background-color: #2E1C2B;
-    border: 1px solid white;
-    z-index: 100;
-    width: 15rem;
+  display: none;
+  position: absolute;
+  padding: 0.5rem;
+  background-color: #2e1c2b;
+  border: 1px solid white;
+  z-index: 100;
+  width: 15rem;
+  margin-top: 0;
+  list-style: none;
 }
 
 .hidden-list.show-list {
-    display: block;
+  display: block;
 }
 
 .hidden-list a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }

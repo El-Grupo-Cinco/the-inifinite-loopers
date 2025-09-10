@@ -12,6 +12,7 @@ import "./styles/App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { BlogPost } from "./object/BlogPost.js";
 import { User } from "./object/user.js";
+import { HeroPage } from "./pages/HeroPage.jsx";
 
 export default function App() {
   const [posts, setPosts] = useState([]);
@@ -95,6 +96,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/hero/:heroId" element={<HeroPage />} />
         </Routes>
       </main>
 
