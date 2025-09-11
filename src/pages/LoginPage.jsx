@@ -18,8 +18,8 @@ export function LoginPage({
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const tryLogin = async () => {
-    const user = await login(username, password);
+  const tryLogin = () => {
+    const user = login(username, password);
     if (user) {
       onLoginSuccess(user);
     } else {
@@ -52,24 +52,19 @@ export function LoginPage({
 
   return <ShowLoginOrLogout />*/
 
-
-    return showLogin ? (
-        <Login
-            view={view}
-            setView={setView}
-            setUsername={setUsername}
-            setPassword={setPassword}
-            tryLogin={tryLogin}
-            username={username}
-            password={password}
-        />
-    ) : (
-        <Logout
-            setIsLogin={setIsLogin}
-            showLoginForm={setShowLoginForm}
-        />
-    );
-
+  return showLogin ? (
+    <Login
+      view={view}
+      setView={setView}
+      setUsername={setUsername}
+      setPassword={setPassword}
+      tryLogin={tryLogin}
+      username={username}
+      password={password}
+    />
+  ) : (
+    <Logout setIsLogin={setIsLogin} showLoginForm={setShowLoginForm} />
+  );
 }
 
 export default LoginPage;
