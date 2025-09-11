@@ -111,22 +111,28 @@ export default function UserPage() {
         {posts.length === 0 ? (
           <p>No posts yet.</p>
         ) : (
-          posts.map((p, idx) => {
-            const users = JSON.parse(localStorage.getItem("users") || "[]");
-            const postAuthor = users.find((u) => u.userId === p.authorId);
+          posts
+            .filter((post) => {
+              return (
+                post.authorId === user?.userId || post.userId === user?.userId
+              );
+            })
+            .map((p, idx) => {
+              const users = JSON.parse(localStorage.getItem("users") || "[]");
+              const postAuthor = users.find((u) => u.userId === p.authorId);
 
-            return (
-              <BlogCard
-                key={p.id ?? idx}
-                authorName={postAuthor?.username || p.title}
-                authorAvatar={postAuthor?.avatar || "/default-avatar.png"}
-                date={p.date}
-                imageSrc={p.imageSrc || ""}
-                title={p.title}
-                text={p.content}
-              />
-            );
-          })
+              return (
+                <BlogCard
+                  key={p.id ?? idx}
+                  authorName={postAuthor?.username || p.title}
+                  authorAvatar={postAuthor?.avatar || "/default-avatar.png"}
+                  date={p.date}
+                  imageSrc={p.imageSrc || ""}
+                  title={p.title}
+                  text={p.content}
+                />
+              );
+            })
         )}
       </section>
     </div>
