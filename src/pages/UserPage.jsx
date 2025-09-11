@@ -112,10 +112,10 @@ export default function UserPage() {
           <p>No posts yet.</p>
         ) : (
           posts.map((p, idx) => {
-              const users = JSON.parse(localStorage.getItem("users") || "[]");
-              const postAuthor = users.find((u) => u.userId === p.authorId);
+            const users = JSON.parse(localStorage.getItem("users") || "[]");
+            const postAuthor = users.find((u) => u.userId === p.authorId);
 
-              return (
+            return (
               <BlogCard
                 key={p.id ?? idx}
                 authorName={postAuthor?.username || p.title}
