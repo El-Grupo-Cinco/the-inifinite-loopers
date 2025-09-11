@@ -29,7 +29,7 @@ export function Login({ view, setView, setUsername, setPassword, tryLogin, usern
           </form>
           <div className="auth-links">
             <p onClick={() => setView("register")}>Create new user</p>
-            <p onClick={() => setView("forgot")}>Forgot password?</p>
+            
           </div>
         </>
       )}
@@ -48,19 +48,7 @@ export function Login({ view, setView, setUsername, setPassword, tryLogin, usern
         </>
       )}
 
-      {view === "forgot" && (
-        <>
-          <h2>Forgot Password</h2>
-          <form className="auth-form">
-            <input type="text" placeholder="Enter Username" required />
-            <input type="password" placeholder="New Password" required />
-            <button type="submit">Reset Password</button>
-          </form>
-          <div className="auth-links">
-            <p onClick={() => setView("login")}>Back to login</p>
-          </div>
-        </>
-      )}
+  
     </div>
   );
 }
