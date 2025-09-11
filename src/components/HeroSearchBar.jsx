@@ -44,7 +44,16 @@ export function HeroSearchBar() {
         {heroList.map((hero) => {
           return (
             <li key={hero.userId}>
-              <Link to={`hero/${hero.userId}`}>{hero.username}</Link>
+              <Link
+                to={`hero/${hero.userId}`}
+                onClick={() => {
+                  setInputValue("");
+                  setListStyle("hidden-list");
+                  setHeroList([]);
+                }}
+              >
+                {hero.username}
+              </Link>
             </li>
           );
         })}
