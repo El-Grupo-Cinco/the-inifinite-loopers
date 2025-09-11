@@ -2,6 +2,26 @@
 import { BlogPost } from "../object/BlogPost.js";
 import { User } from "../object/user.js";
 
+/*
+// Check if users already exist, skip setup if they do
+const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
+const existingPosts = JSON.parse(localStorage.getItem("posts") || "[]");
+
+if (existingUsers.length === 0 || existingPosts.length === 0) {
+  console.log("First time setup — creating users and posts");
+
+  const userList = [
+    new User("9371ab7b-e043-41fb-899d-5efd256f136f", "Super-Bobang", "Test123"),
+    new User("65d2d61b-6188-470e-ac1d-fe8f189d0372", "Rabbit Of Fire", "Test123"),
+    new User("caded204-9e89-4777-ab3e-cda1362202ab", "Fever Zever", "Test123"),
+    new User("db48811e-134b-4497-9982-131cea1316f2", "Garlic Baguette", "Test123"),
+  ];
+
+  saveUsers(userList);
+  savePosts(userList);
+}
+*/
+
 // Rensa gamla värden i localStorage och starta med tomma arrayer
 localStorage.setItem("users", JSON.stringify([]));
 localStorage.setItem("posts", JSON.stringify([]));
@@ -11,11 +31,7 @@ const userList = [
   new User("9371ab7b-e043-41fb-899d-5efd256f136f", "Super-Bobang", "Test123"),
   new User("65d2d61b-6188-470e-ac1d-fe8f189d0372", "Rabbit Of Fire", "Test123"),
   new User("caded204-9e89-4777-ab3e-cda1362202ab", "Fever Zever", "Test123"),
-  new User(
-    "db48811e-134b-4497-9982-131cea1316f2",
-    "Garlic Baguette",
-    "Test123"
-  ),
+  new User("db48811e-134b-4497-9982-131cea1316f2", "Garlic Baguette", "Test123"),
 ];
 
 // Spara användare och skapa inlägg
@@ -23,7 +39,7 @@ saveUsers();
 savePosts();
 
 // Funktion som sparar användare i localStorage
-function saveUsers() {
+function saveUsers() {            // Add userList <---------------------------------------
   console.log("Setting up mock users");
 
   for (let user of userList) {
@@ -34,7 +50,7 @@ function saveUsers() {
 }
 
 // Funktion som skapar och sparar blogginlägg
-function savePosts() {
+function savePosts() {          // Add userList <---------------------------------------
   console.log("Setting up mock posts");
   const postList = []; // här samlas alla inlägg
 

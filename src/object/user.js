@@ -4,7 +4,6 @@ export class User {
     this.username = username;
     this.password = password;
     this.avatar = avatar;
-    //TODO add avatar
   }
 
   save() {

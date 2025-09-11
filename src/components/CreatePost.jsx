@@ -21,15 +21,22 @@ export default function CreatePost({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newPost = new BlogPost(
-      crypto.randomUUID(),
-      new Date().toLocaleDateString(),
-      title,
-      content,
-      "123" // TODO: Replace with logged-in user's ID
-    );
+      const user = JSON.parse(localStorage.getItem("loggedIn"));
+      if (!user) {
+          alert("You must be logged in to create a post.");
+          return;
+      }
 
-    onSubmit(newPost);
+      const newPost = new BlogPost(
+          crypto.randomUUID(),
+          new Date().toLocaleDateString(),
+          title,
+          content,
+          user.userId, // logged-in user's ID
+          image
+      );
+
+      onSubmit(newPost);
     setTitle("");
     setContent("");
   };

@@ -6,12 +6,6 @@ export default function UserPage() {
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState([]);
 
-  /*useEffect(() => {
-    const username = localStorage.getItem("username");
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const loggedInUser = users.find((u) => u.username === username) || null;
-    setUser(loggedInUser);*/
-
   useEffect(() => {
     const loggedInRaw = localStorage.getItem("loggedIn");
     if (loggedInRaw && loggedInRaw !== "false") {
@@ -41,8 +35,8 @@ export default function UserPage() {
     }
 
     saved.sort((a, b) => {
-      const tb = timeOf(b.date ?? b.createdAt ?? b.timestamp ?? b.id);
-      const ta = timeOf(a.date ?? a.createdAt ?? a.timestamp ?? a.id);
+      const tb = timeOf(b.date ?? b.date ?? b.timestamp ?? b.id);
+      const ta = timeOf(a.date ?? a.date ?? a.timestamp ?? a.id);
       return tb - ta;
     });
 
@@ -60,7 +54,7 @@ export default function UserPage() {
       //Update user in localStorage
       const users = JSON.parse(localStorage.getItem("users") || "[]");
       const updatedUsers = users.map((u) =>
-        u.userID === user.userID ? updatedUser : u
+        u.userId === user.userId ? updatedUser : u
       );
       localStorage.setItem("users", JSON.stringify(updatedUsers));
       localStorage.setItem("loggedIn", JSON.stringify(updatedUser));
@@ -109,7 +103,7 @@ export default function UserPage() {
         )}
 
         <h2 style={{ margin: 0 }}>{user ? user.username : "Not logged in"}</h2>
-        {user && <p style={{ marginTop: ".4rem" }}>User ID: {user.userID}</p>}
+        {user && <p style={{ marginTop: ".4rem" }}>User ID: {user.userId}</p>}
       </section>
 
       <section className="user-posts">
@@ -118,11 +112,13 @@ export default function UserPage() {
           <p>No posts yet.</p>
         ) : (
           posts.map((p, idx) => {
-            const postAuthor = users.find((u) => u.userID === p.authorId); //TODO: fix since only gets its own posts in UserPage
-            return (
+              const users = JSON.parse(localStorage.getItem("users") || "[]");
+              const postAuthor = users.find((u) => u.userId === p.authorId);
+
+              return (
               <BlogCard
                 key={p.id ?? idx}
-                authorName={postAuthor?.username || p.authorId}
+                authorName={postAuthor?.username || p.title}
                 authorAvatar={postAuthor?.avatar || "/default-avatar.png"}
                 date={p.date}
                 imageSrc={p.imageSrc || ""}

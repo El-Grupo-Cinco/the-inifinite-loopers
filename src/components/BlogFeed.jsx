@@ -19,6 +19,7 @@ export default function BlogFeed({ posts, users }) {
             title={post.title}
             text={post.content}
             date={post.date}
+            imageSrc={post.imageSrc}
             authorName={author?.username || "Unknown"}
             authorAvatar={author?.avatar || "/default-avatar.png"}
           />

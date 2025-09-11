@@ -14,12 +14,15 @@ export default function UserCard({ avatarSrc, name, date }) {
         {/* Bilden kan vara valfri URL. Om ingen bild ges – lägg gärna en default i vår public-mapp */}
         <img
           className="usercard__avatar"
-          /*src={typeof avatarSrc === "string" && avatarSrc.startsWith("http") ? avatarSrc : process.env.PUBLIC_URL + "/default-avatar.png"}
-          alt={name}*/
-
-          src={avatarSrc || "/default-avatar.png"}
+          src={avatarSrc && avatarSrc.trim() !== "" ? avatarSrc : "/default-avatar.png"}
           alt={name}
-          onError={e => { e.target.onerror = null; e.target.src = /*process.env.PUBLIC_URL +*/ "/default-avatar.png"; }}
+
+          onError={(e) => {
+              if (!e.target.src.includes("default-avatar.png")) {
+                  e.target.onerror = null;
+                  e.target.src = "/default-avatar.png";
+              }
+          }}
         />
         <span className="usercard__name">{name}</span>
       </div>
@@ -36,6 +39,6 @@ UserCard.propTypes = {
 };
 
 UserCard.defaultProps = {
-  avatarSrc: /*process.env.PUBLIC_URL +*/ "/default-avatar.png",
+  avatarSrc: "/default-avatar.png",
 };
 
