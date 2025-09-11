@@ -18,7 +18,7 @@ export function HeroPage() {
 
   useEffect(() => {
     getHerosPost(heroId).then(setPosts);
-  }, []);
+  }, [heroId]);
 
   return (
     <main>
