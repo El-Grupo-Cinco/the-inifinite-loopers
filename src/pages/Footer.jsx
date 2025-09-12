@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/Footer.css";
-import PropTypes from "prop-types";
 
-export default function Footer({ onNavigate }) {
+export default function Footer() {
   return (
     <footer className="site-footer">
       <p>© {new Date().getFullYear()} The Infinite Loopers</p>
@@ -20,7 +19,3 @@ export default function Footer({ onNavigate }) {
     </footer>
   );
 }
-
-Footer.propTypes = {
-  onNavigate: PropTypes.func.isRequired,
-};
