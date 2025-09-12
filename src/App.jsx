@@ -20,14 +20,13 @@ export default function App() {
   const [showLoginForm, setShowLoginForm] = useState(true);
   const [users, setUsers] = useState([]);
 
-    const handleNewPost = (post) => {
-        const updatedPosts = [post, ...posts];
-        setPosts(updatedPosts);
-        localStorage.setItem("posts", JSON.stringify(updatedPosts)); // <-- this line keeps them saved
-    };
+  const handleNewPost = (post) => {
+    const updatedPosts = [post, ...posts];
+    setPosts(updatedPosts);
+    localStorage.setItem("posts", JSON.stringify(updatedPosts)); // <-- this line keeps them saved
+  };
 
-
-    //checks login status when loading first time (to set login/Log out button in header)
+  //checks login status when loading first time (to set login/Log out button in header)
   useEffect(() => {
     const stored = localStorage.getItem("loggedIn");
 
@@ -46,13 +45,20 @@ export default function App() {
     setUsers(newUsers);
   }, []);
 
-    useEffect(() => {
-        const localStoragePosts = JSON.parse(localStorage.getItem("posts") || "[]");
-        const newPosts = localStoragePosts.map((p) => {
-            return new BlogPost(p.id, p.date, p.title, p.content, p.userId, p.imageSrc);
-        });
-        setPosts(newPosts);
-    }, []);
+  useEffect(() => {
+    const localStoragePosts = JSON.parse(localStorage.getItem("posts") || "[]");
+    const newPosts = localStoragePosts.map((p) => {
+      return new BlogPost(
+        p.id,
+        p.date,
+        p.title,
+        p.content,
+        p.userId,
+        p.imageSrc
+      );
+    });
+    setPosts(newPosts);
+  }, []);
 
   //used in LoginPage props, used to set user and changes login/Log out button in header
   //also sets if login form shall show in LoginPage
@@ -74,6 +80,18 @@ export default function App() {
     localStorage.setItem("loggedIn", "false");
     setIsLoggedIn("Login");
   };
+
+  //check, upon reloading the page, if someone is already logged in (otherwise just sets showLoginForm to true)
+  useEffect(() => {
+    let loginStatus = JSON.parse(localStorage.getItem("loggedIn"));
+    if (loginStatus === false || loginStatus === undefined) {
+      setIsLoggedIn("Login");
+      setShowLoginForm(true);
+    } else {
+      setIsLoggedIn("Log out");
+      setShowLoginForm(false);
+    }
+  }, []);
 
   return (
     <BrowserRouter>

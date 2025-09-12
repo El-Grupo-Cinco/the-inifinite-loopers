@@ -25,8 +25,6 @@ export function LoginPage({
   };
 
   const ShowLoginOrLogout = () => {
-    console.log(showLogin);
-
     if (showLogin) {
       return (
         <Login
@@ -47,20 +45,6 @@ export function LoginPage({
   };
 
   return <ShowLoginOrLogout />;
-
-  /*   return showLogin ? (
-    <Login
-      view={view}
-      setView={setView}
-      setUsername={setUsername}
-      setPassword={setPassword}
-      tryLogin={tryLogin}
-      username={username}
-      password={password}
-    />
-  ) : (
-    <Logout setIsLogin={setIsLogin} showLoginForm={setShowLoginForm} />
-  ); */
 }
 
 export default LoginPage;

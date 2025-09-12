@@ -44,8 +44,6 @@ export function logout() {
  * @returns
  */
 function checkPassword(user, passwordInput) {
-  console.log(JSON.stringify(user) + " " + passwordInput);
-
   if (passwordInput === user.password) {
     console.log("checkpass true");
 
