@@ -119,7 +119,7 @@ export default function UserPage() {
             })
             .map((p, idx) => {
               const users = JSON.parse(localStorage.getItem("users") || "[]");
-              const postAuthor = users.find((u) => u.userId === p.authorId);
+              const postAuthor = users.find((u) => u.userId === p.userId || u.userId === p.authorId);
 
               return (
                 <BlogCard

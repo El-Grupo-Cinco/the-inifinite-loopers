@@ -20,9 +20,14 @@ export default function App() {
   const [showLoginForm, setShowLoginForm] = useState(true);
   const [users, setUsers] = useState([]);
 
-  const handleNewPost = (post) => setPosts([post, ...posts]);
+    const handleNewPost = (post) => {
+        const updatedPosts = [post, ...posts];
+        setPosts(updatedPosts);
+        localStorage.setItem("posts", JSON.stringify(updatedPosts)); // <-- this line keeps them saved
+    };
 
-  //checks login status when loading first time (to set login/Log out button in header)
+
+    //checks login status when loading first time (to set login/Log out button in header)
   useEffect(() => {
     const stored = localStorage.getItem("loggedIn");
 
@@ -41,13 +46,13 @@ export default function App() {
     setUsers(newUsers);
   }, []);
 
-  useEffect(() => {
-    const localStoragePosts = JSON.parse(localStorage.getItem("posts"));
-    const newPosts = localStoragePosts.map((p) => {
-      return new BlogPost(p.id, p.date, p.title, p.content, p.userId);
-    });
-    setPosts(newPosts);
-  }, []);
+    useEffect(() => {
+        const localStoragePosts = JSON.parse(localStorage.getItem("posts") || "[]");
+        const newPosts = localStoragePosts.map((p) => {
+            return new BlogPost(p.id, p.date, p.title, p.content, p.userId, p.imageSrc);
+        });
+        setPosts(newPosts);
+    }, []);
 
   //used in LoginPage props, used to set user and changes login/Log out button in header
   //also sets if login form shall show in LoginPage

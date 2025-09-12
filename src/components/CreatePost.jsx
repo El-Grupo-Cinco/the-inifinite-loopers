@@ -36,9 +36,16 @@ export default function CreatePost({ onSubmit }) {
           image
       );
 
-      onSubmit(newPost);
-    setTitle("");
-    setContent("");
+      const existingPosts = JSON.parse(localStorage.getItem("posts") || "[]");
+      const updatedPosts = [newPost, ...existingPosts];
+      localStorage.setItem("posts", JSON.stringify(updatedPosts));
+
+        // Update parent UI if needed
+      if (onSubmit) onSubmit(newPost);
+
+      setTitle("");
+      setContent("");
+      setImage(null);
   };
 
   return (
