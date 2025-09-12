@@ -1,4 +1,12 @@
-export function Login({ view, setView, setUsername, setPassword, tryLogin, username, password }) {
+export function Login({
+  view,
+  setView,
+  setUsername,
+  setPassword,
+  tryLogin,
+  username,
+  password,
+}) {
   return (
     <div className="auth-container">
       {view === "login" && (
@@ -16,20 +24,23 @@ export function Login({ view, setView, setUsername, setPassword, tryLogin, usern
               placeholder="Username"
               required
               value={username}
-              onChange={(e) => {setUsername(e.target.value);}}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
             />
             <input
               type="password"
               placeholder="Password"
               required
               value={password}
-              onChange={(e) => {setPassword(e.target.value);}}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <button type="submit">Login</button>
           </form>
           <div className="auth-links">
             <p onClick={() => setView("register")}>Create new user</p>
-            
           </div>
         </>
       )}
@@ -47,8 +58,6 @@ export function Login({ view, setView, setUsername, setPassword, tryLogin, usern
           </div>
         </>
       )}
-
-  
     </div>
   );
 }
