@@ -1,11 +1,35 @@
-:root {
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
   background-color: #eaeaea;
   color: #4a1942;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  background-color: rgba(74, 25, 66, 0.1); /* Light tint to show the area */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
