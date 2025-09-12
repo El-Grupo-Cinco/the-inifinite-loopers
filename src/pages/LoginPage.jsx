@@ -11,9 +11,6 @@ export function LoginPage({
   setIsLogin,
   setShowLoginForm,
 }) {
-  //TODO: move login page to separate component, and creatre a logout component.
-  //TODO: make shw depeding on login status
-
   const [view, setView] = useState("login");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

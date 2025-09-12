@@ -2,8 +2,6 @@ import BlogCard from "./BlogCard";
 import "../styles/blogfeed.css";
 
 export default function BlogFeed({ posts, users }) {
-  console.log(JSON.stringify(posts) + " " + JSON.stringify(users));
-
   if (!Array.isArray(posts) || posts.length === 0) {
     return <p className="no-posts">📝 No posts yet. Go create one!</p>;
   }
