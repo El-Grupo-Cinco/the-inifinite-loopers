@@ -1,0 +1,38 @@
+.hero-profile-card{
+  display:flex; gap:14px; align-items:center;
+  background:#2E1C2B; color:#EAEAEA;
+  border-radius:20px; padding:16px 18px; margin:16px 0 22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.hero-profile-avatar{
+  width:72px; height:72px; border-radius:999px; object-fit:cover;
+  background:#3b2837; border:1px solid rgba(255,255,255,.08);
+}
+
+.hero-profile-name{
+  margin:0; line-height:1.2; font-size:1.35rem; font-weight:700;
+}
+
+.hero-profile-idrow{
+  display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;
+}
+
+.hero-profile-idlabel{ 
+  font-size:.85rem; opacity:.8; letter-spacing:.02em;
+}
+
+.hero-profile-id{
+  background:#1f1320; color:#EAEAEA; border-radius:8px;
+  padding:4px 8px; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.hero-profile-copy{
+  background:#893168; color:#fff; border:0; border-radius:8px;
+  padding:4px 10px; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+.hero-profile-copy:hover{ filter:brightness(1.05); }
+
+.hero-profile-desc{
+  margin:10px 0 0; color:#f1d9ea; max-width:70ch;
+}
