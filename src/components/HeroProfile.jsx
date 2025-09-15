@@ -4,15 +4,8 @@ import "../styles/heroProfile.css";
 export default function HeroProfile({ hero }) {
   if (!hero) return null;
 
-  const avatarSrc = hero.avatar && hero.avatar.trim() !== ""
-    ? hero.avatar
-    : "/default-avatar.png";
-
-  async function copyId() {
-    try {
-      await navigator.clipboard.writeText(hero.userId);
-    } catch { /* no-op */ }
-  }
+  const avatarSrc =
+    hero.avatar && hero.avatar.trim() !== "" ? hero.avatar : "/default-avatar.png";
 
   return (
     <section className="hero-profile-card">
@@ -25,11 +18,11 @@ export default function HeroProfile({ hero }) {
 
       <div className="hero-profile-body">
         <h1 className="hero-profile-name">{hero.username}</h1>
+        <div className="hero-profile-handle">@{hero.username}</div>
 
         <div className="hero-profile-idrow">
           <span className="hero-profile-idlabel">UUID</span>
           <code className="hero-profile-id">{hero.userId}</code>
-          <button className="hero-profile-copy" onClick={copyId} aria-label="Copy UUID">Copy</button>
         </div>
 
         {hero.description && (
@@ -42,9 +35,9 @@ export default function HeroProfile({ hero }) {
 
 HeroProfile.propTypes = {
   hero: PropTypes.shape({
-    userId: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    avatar: PropTypes.string,
-    description: PropTypes.string,
+    userId: PropTypes.string.isRequired,     // hårdkodat i setupCode.js
+    username: PropTypes.string.isRequired,   // t.ex. "Rabbit-Of-Fire"
+    avatar: PropTypes.string,                // url till bild
+    description: PropTypes.string,           // hårdkodad info
   }),
 };

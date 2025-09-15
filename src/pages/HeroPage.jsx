@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import BlogFeed from "../components/BlogFeed";
 import HeroProfile from "../components/HeroProfile.jsx";
@@ -19,10 +19,14 @@ export function HeroPage() {
 
   return (
     <div className="home-container">
-      {/* Profil-headern du ville ha */}
       <HeroProfile hero={hero} />
 
-      {/* Befintligt postflöde, återanvänder dina komponenter */}
+      {hero && (
+        <Fragment>
+          <h2 style={{margin: "8px 0 12px"}}>Posts by {hero.username}</h2>
+        </Fragment>
+      )}
+
       <BlogFeed posts={posts} users={users} />
     </div>
   );

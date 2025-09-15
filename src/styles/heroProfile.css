@@ -14,8 +14,12 @@
   margin:0; line-height:1.2; font-size:1.35rem; font-weight:700;
 }
 
+.hero-profile-handle{
+  margin-top:2px; color:#c9bfd0; font-size:.92rem;
+}
+
 .hero-profile-idrow{
-  display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;
+  display:flex; align-items:center; gap:8px; margin-top:8px; flex-wrap:wrap;
 }
 
 .hero-profile-idlabel{ 
@@ -26,12 +30,6 @@
   background:#1f1320; color:#EAEAEA; border-radius:8px;
   padding:4px 8px; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-
-.hero-profile-copy{
-  background:#893168; color:#fff; border:0; border-radius:8px;
-  padding:4px 10px; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,.25);
-}
-.hero-profile-copy:hover{ filter:brightness(1.05); }
 
 .hero-profile-desc{
   margin:10px 0 0; color:#f1d9ea; max-width:70ch;
