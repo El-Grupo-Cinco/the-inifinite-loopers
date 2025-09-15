@@ -1,42 +1,29 @@
 import { useEffect, useState } from "react";
-import BlogFeed from "../components/BlogFeed";
-import { BlogPost } from "../object/BlogPost";
-import { User } from "../object/user.js";
 import { useParams } from "react-router-dom";
+import BlogFeed from "../components/BlogFeed";
+import HeroProfile from "../components/HeroProfile.jsx";
 
 export function HeroPage() {
-  const heroId = useParams().heroId;
-  console.log(heroId);
-
+  const { heroId } = useParams();
+  const [users, setUsers] = useState([]);
   const [posts, setPosts] = useState([]);
 
-  const heroParsed = JSON.parse(localStorage.getItem("users")).find(
-    (u) => u.userId === heroId
-  );
-
-  const hero = new User(heroParsed.userId, heroParsed.username, "", "");
-
   useEffect(() => {
-    getHerosPost(heroId).then(setPosts);
+    const u = JSON.parse(localStorage.getItem("users") || "[]");
+    const p = JSON.parse(localStorage.getItem("posts") || "[]");
+    setUsers(u);
+    setPosts(p.filter((post) => post.userId === heroId));
   }, [heroId]);
 
+  const hero = users.find((u) => u.userId === heroId);
+
   return (
-    <main>
-      <div className="hero-presentation">{hero.username}</div>
-      <BlogFeed posts={posts} users={[hero]} />
-    </main>
+    <div className="home-container">
+      {/* Profil-headern du ville ha */}
+      <HeroProfile hero={hero} />
+
+      {/* Befintligt postflöde, återanvänder dina komponenter */}
+      <BlogFeed posts={posts} users={users} />
+    </div>
   );
-}
-
-async function getHerosPost(heroId) {
-  const allPosts = await JSON.parse(localStorage.getItem("posts"));
-  const filtered = allPosts
-    .filter((p) => p.userId === heroId)
-    .map(
-      (post) =>
-        new BlogPost(post.id, post.date, post.title, post.content, post.userId)
-    );
-  console.log(JSON.stringify(filtered));
-
-  return filtered;
 }
